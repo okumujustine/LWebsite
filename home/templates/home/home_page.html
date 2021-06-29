@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+ {% block main_banner %}
+
+ {% image page.banner_background_image fill-1600x800 as bg_image %}
+
+ <section class="custom-vh w-full px-6 flex items-center "
+ style="
+ background: linear-gradient(180.43deg, rgba(37, 55, 219, 0.08) 0%, rgba(37, 55, 219, 0.15) 100%), url({{bg_image.url}});background-size: cover; background-repeat: no-repeat;
+ "
+
+ >
+  <div class="w-6/12 hidden md:block"></div>
+ <div class="w-full md:w-5/12">
+    {% if page.title %}
+        <h1 class="text-white captalize text-5xl pb-6 font-bold uppercase">{{ page.title }}</h1>
+     {% endif %}
+
+     {% if page.lead_text %}
+        <h3 class="custom-orange-color text-3xl">{{ page.lead_text }}</h3>
+     {% endif %}
+
+    {% if page.button %}
+        <a href="{{ page.button.url }}">
+            {{ page.button_text }}
+        </a>
+    {% endif %}
+
+ </div>
+</section>
+ {% endblock %}
+
+{% block content %}
+    {{ page.body|richtext }}
+{% endblock %}

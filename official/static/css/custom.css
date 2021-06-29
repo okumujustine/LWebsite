@@ -1,0 +1,30 @@
+.custom-hover:hover{
+    border-bottom: 2px solid #FCB614;
+    color: #FCB614;
+}
+
+.custom-active {
+    border-bottom: 2px solid #FCB614;
+    color: #FCB614;
+}
+
+.custom-orange-color {
+    color: #FCB614;
+}
+
+.custom-orange-bg {
+    background-color: #FCB614;
+}
+
+.main-blue-bg {
+    background-color: rgba(27,86,151,1) !important;
+}
+
+
+.custom-main-blue-color {
+    color: rgba(27,86,151,1) !important;
+}
+
+.custom-vh {
+    min-height: 610px !important;
+}

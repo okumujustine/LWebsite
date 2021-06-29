@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+
+{% block content %}
+
+{% for gallery in galleries %}
+    {% image gallery.gallery_image fill-573x369 as gal_img %}
+<div class="border px-3 py-2 border-black mb-3">
+    <img src="{{gal_img.url}}" alt="{{page.title }}"/>
+    <a href="{{gallery.url}}" class="text-blue-600 capitalize">{{ gallery.title }}</a>
+   <h2>{{ gallery.description }}</h2>
+</div>
+{% endfor %}
+
+{% endblock %}

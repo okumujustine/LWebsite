@@ -1,0 +1,8 @@
+*.pyc
+*.swp
+.DS_Store
+/venv/
+/env/
+.env
+/static/
+/media/

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+ {% image page.gallery_image fill-1200x369 as gallery_img %}
+
+   <img src="{{gallery_img.url}}" alt="{{page.title }}"/>
+    <h1>{{ page.title }}</h1>
+    <hr/>
+    
+    {% for iter in self.gallery_image_orderable.all %}
+    {% image iter.image.image fill-320x290 as iter_img %}
+    <div>
+    <img src="{{iter_img.url}}" alt="{{iter_img.title}}"/>
+    <h5>{{iter.image.title}}</h5>
+    </div>
+    
+{% endfor %}
+{% endblock %}

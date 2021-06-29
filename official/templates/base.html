@@ -1,0 +1,87 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>
+            {% block title %}
+                {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
+            {% endblock %}
+            {% block title_suffix %}
+                {% with self.get_site.site_name as site_name %}
+                    {% if site_name %}- {{ site_name }}{% endif %}
+                {% endwith %}
+            {% endblock %}
+        </title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/tailwind.css' %}">     
+        <link rel="stylesheet" type="text/css" href="{% static 'css/official.css' %}">
+         <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+
+        <style>
+        </style>
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+        <nav class="flex flex-wrap items-center justify-between main-blue-bg p-5 top-0 sticky z-50">
+        <!-- logo -->
+        <h5 class="text-gray-200 text-2xl font-bold">PAT</h5>
+    <!-- hamburger -->
+    <div class="flex lg:hidden">
+    <button id="hamburger">
+        <img class="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png" width="40" height="40" />
+        <img class="toggle hidden" src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png" width="40" height="40" />
+    </button>
+    </div>
+    <!-- links -->
+<div class="toggle hidden lg:flex w-full lg:w-auto text-right text-bold mt-5 lg:mt-0 border-t-2 border-blue-900 lg:border-none uppercase ">        
+  <a href="/" class="block lg:inline-block text-white lg:mr-2  px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover {% if request.path == '/' %} custom-active {% endif %}">Home</a>
+  <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Story</a>
+  <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Agenda</a>
+    <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Why Pat</a>
+  <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Activism</a>
+  <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Events</a>
+    <a href="/listing-all-our-galleries" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover {% if request.path == '/listing-all-our-galleries/' %} custom-active {% endif %} ">Gallery</a>
+  <a href="#" class="block lg:inline-block text-white  lg:mr-2 px-3 py-3 border-b-2 border-blue-900 lg:border-none uppercase  custom-hover">Contact</a>
+</div>
+<!-- cta -->
+<a href="#" class="toggle hidden lg:flex w-full lg:w-auto px-4 py-2 text-right text-white md:rounded custom-orange-bg custom-main-blue-color">Donate</a>
+
+</nav> 
+<div>
+
+<div>{% block main_banner %}{% endblock %}</div> 
+<div class="min-h-screen p-6">
+ {% block content %}{% endblock %}
+</div>
+<div class="bg-black text-white">
+<h5>footer</h5>
+</div>
+       
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/official.js' %}"></script>
+        <script type="text/javascript">
+        document.getElementById("hamburger").onclick = function toggleMenu() {
+  const navToggle = document.getElementsByClassName("toggle");
+  for (let i = 0; i < navToggle.length; i++) {
+    navToggle.item(i).classList.toggle("hidden");
+  }
+};
+        </script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>
