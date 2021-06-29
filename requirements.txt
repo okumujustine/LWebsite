@@ -31,6 +31,7 @@ typing-extensions==3.10.0.0
 urllib3==1.26.5
 wagtail==2.13.2
 webencodings==0.5.1
+whitenoise==5.2.0
 Willow==1.4
 xlrd==2.0.1
 XlsxWriter==1.4.3
